@@ -40,14 +40,14 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? ["https://yourdomain.com"]
+        ? ["https://note-nex-iota.vercel.app"]
         : [
-            "http://localhost:3000", 
-            "http://localhost:3001", 
-            "http://localhost:5173",  // Added Vite default port
-            "http://localhost:5174",  // Added backup Vite port
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "http://localhost:5173", // Added Vite default port
+            "http://localhost:5174", // Added backup Vite port
             "http://localhost:4173",
-            "https://note-nex-iota.vercel.app/"  // Added Vite preview port
+            "https://note-nex-iota.vercel.app", // Added Vite preview port
           ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
@@ -103,5 +103,7 @@ app.listen(PORT, () => {
   console.log(
     `🚀 StudyShare server running on port ${PORT} in ${process.env.NODE_ENV} mode`
   );
-  console.log(`📡 CORS enabled for development ports: 3000, 3001, 5173, 5174, 4173`);
+  console.log(
+    `📡 CORS enabled for development ports: 3000, 3001, 5173, 5174, 4173`
+  );
 });
