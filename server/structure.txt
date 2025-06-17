@@ -1,0 +1,126 @@
+# StudyShare Backend Server Folder Structure
+
+```
+studyshare-backend/
+│
+├── 📁 config/
+│   ├── database.js          # MongoDB connection config
+│   ├── cloudinary.js        # File upload service config (for PDFs, images)
+│   └── keys.js              # Environment variables & API keys
+│
+├── 📁 controllers/
+│   ├── authController.js    # Login, Register, JWT handling
+│   ├── notesController.js   # Upload, Browse, Download, Search notes
+│   ├── userController.js    # Profile, Upload history, Downloads
+│   ├── adminController.js   # Admin panel, moderation, analytics
+│   ├── communityController.js # Study groups, discussions
+│   └── interactionController.js # Likes, comments, bookmarks
+│
+├── 📁 middleware/
+│   ├── auth.js              # JWT token verification
+│   ├── admin.js             # Admin role verification
+│   ├── upload.js            # Multer file upload middleware
+│   ├── validation.js        # Input validation middleware
+│   └── errorHandler.js      # Global error handling
+│
+├── 📁 models/
+│   ├── User.js              # User schema (students, contributors)
+│   ├── Note.js              # Notes schema (PDF, title, subject, etc.)
+│   ├── Comment.js           # Comments on notes
+│   ├── StudyGroup.js        # Study groups/discussion rooms
+│   ├── College.js           # College/University data
+│   ├── Subject.js           # Subjects/courses data
+│   └── Analytics.js         # Site analytics data
+│
+├── 📁 routes/
+│   ├── auth.js              # /api/auth/* - Login, register routes
+│   ├── notes.js             # /api/notes/* - Notes CRUD operations
+│   ├── users.js             # /api/users/* - User profile routes
+│   ├── admin.js             # /api/admin/* - Admin panel routes
+│   ├── community.js         # /api/community/* - Study groups
+│   ├── search.js            # /api/search/* - Search functionality
+│   └── upload.js            # /api/upload/* - File upload routes
+│
+├── 📁 utils/
+│   ├── generateToken.js     # JWT token generation
+│   ├── fileHelpers.js       # File processing utilities
+│   ├── constants.js         # App constants (subjects, semesters)
+│   ├── validators.js        # Input validation functions
+│   └── adminCredentials.js  # Hardcoded admin login credentials
+│
+├── 📁 uploads/              # Local file storage (temporary)
+│   ├── notes/               # Uploaded notes before cloud upload
+│   ├── avatars/             # User profile pictures
+│   └── temp/                # Temporary file processing
+│
+├── 📁 public/
+│   ├── images/              # Static images
+│   └── assets/              # Other static assets
+│
+├── 📁 scripts/
+│   ├── seedData.js          # Database seeding script
+│   ├── createAdmin.js       # Create admin user script
+│   └── cleanup.js           # File cleanup utilities
+│
+├── server.js                # Main server entry point
+├── app.js                   # Express app configuration
+├── package.json             # Dependencies and scripts
+├── .env                     # Environment variables
+├── .gitignore               # Git ignore file
+└── README.md                # Project documentation
+```
+
+## Key Files Overview
+
+### 📁 config/
+- **database.js** - MongoDB connection using Mongoose
+- **cloudinary.js** - Cloud storage for PDFs and images
+- **keys.js** - Environment variables (DB_URI, JWT_SECRET, etc.)
+
+### 📁 controllers/
+- **authController.js** - Simple username/password auth with JWT
+- **notesController.js** - Core notes functionality (upload, browse, download)
+- **adminController.js** - Admin dashboard, note moderation, user management
+- **communityController.js** - Study groups and discussion features
+
+### 📁 models/
+- **User.js** - User accounts (role: 'student' | 'admin')
+- **Note.js** - Notes with metadata (subject, semester, college, file URL)
+- **StudyGroup.js** - Discussion rooms by subject
+
+### 📁 utils/
+- **adminCredentials.js** - Hardcoded admin login (username: 'admin', password: 'admin123')
+
+### Main Files
+- **server.js** - Express server setup with MongoDB connection
+- **app.js** - Routes, middleware, and CORS configuration
+
+## Environment Variables (.env)
+```env
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/studyshare
+JWT_SECRET=your-secret-key
+CLOUDINARY_CLOUD_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+```
+
+## Package.json Scripts
+```json
+{
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seedData.js"
+  }
+}
+```
+
+This structure provides:
+- ✅ Simple authentication without Firebase
+- ✅ File upload handling
+- ✅ Admin panel with hardcoded credentials
+- ✅ All core features from your requirements
+- ✅ Clean separation of concerns
+- ✅ Easy to scale and maintain
