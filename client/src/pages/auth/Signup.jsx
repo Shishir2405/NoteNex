@@ -131,7 +131,7 @@ const Signup = () => {
 
     // Debug logging
     console.log("📤 Sending registration request:", {
-      url: "http://localhost:5001/api/auth/register",
+      url: `${import.meta.env.VITE_API_URL}`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       payload: requestPayload,
