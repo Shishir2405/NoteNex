@@ -41,7 +41,7 @@ const apiCall = async (endpoint, options = {}) => {
   };
 
   try {
-    const response = await fetch(`http://localhost:5001/api${endpoint}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
       ...defaultOptions,
       ...options,
       headers: { ...defaultOptions.headers, ...options.headers },
@@ -263,7 +263,7 @@ export const BrowseNotesPage = () => {
   const handleDownload = async (noteId) => {
     try {
       const response = await fetch(
-        `http://localhost:5001/api/notes/${noteId}/download`,
+        `${import.meta.env.VITE_API_URL}/notes/${noteId}/download`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

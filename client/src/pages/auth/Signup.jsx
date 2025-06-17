@@ -138,7 +138,7 @@ const Signup = () => {
     });
 
     try {
-      const response = await fetch("http://localhost:5001/api/auth/register", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -279,15 +279,6 @@ const Signup = () => {
             <p className="text-gray-600">
               Join StudyShare and start your academic journey
             </p>
-          </div>
-
-          {/* Debug Info */}
-          <div className="bg-gray-50 p-3 rounded-lg text-xs">
-            <p>
-              <strong>Debug Info:</strong> Check browser console for detailed
-              logs
-            </p>
-            <p>Server: http://localhost:5001/api/auth/register</p>
           </div>
 
           {/* Error Message */}

@@ -83,7 +83,7 @@ const DashboardLayout = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5001/api/auth/me", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -108,7 +108,7 @@ const DashboardLayout = () => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("token");
-      await fetch("http://localhost:5001/api/auth/logout", {
+      await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

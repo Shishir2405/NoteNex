@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 // API Base URL
-const API_BASE = "http://localhost:5001/api";
+const API_BASE = `${import.meta.env.VITE_API_URL}`;
 
 // API Helper Functions
 const apiCall = async (endpoint, options = {}) => {
