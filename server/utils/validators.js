@@ -91,31 +91,28 @@ const validateNoteUpload = (data) => {
       "any.required": "College is required",
     }),
 
-    tags: Joi.array().items(Joi.string().max(30)).max(10).messages({
+    tags:  Joi.string().required().messages({
       "array.max": "Maximum 10 tags allowed",
       "string.max": "Each tag cannot exceed 30 characters",
     }),
 
-    topics: Joi.array().items(Joi.string().max(50)).max(10).messages({
+    topics:  Joi.string().required().messages({
       "array.max": "Maximum 10 topics allowed",
       "string.max": "Each topic cannot exceed 50 characters",
     }),
 
     isPremium: Joi.boolean().default(false),
 
-    price: Joi.number()
-      .min(0)
-      .max(500)
-      .when("isPremium", {
-        is: true,
-        then: Joi.required(),
-        otherwise: Joi.default(0),
-      })
-      .messages({
-        "number.min": "Price cannot be negative",
-        "number.max": "Price cannot exceed ₹500",
-        "any.required": "Price is required for premium notes",
-      }),
+    price: Joi.when("isPremium", {
+      is: true,
+      then: Joi.number().min(0).max(500).required(),
+      otherwise: Joi.number().min(0).max(500).default(0),
+    })
+    .messages({
+      "number.min": "Price cannot be negative",
+      "number.max": "Price cannot exceed ₹500",
+      "any.required": "Price is required for premium notes",
+    }),
   });
 
   return schema.validate(data);

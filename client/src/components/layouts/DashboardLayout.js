@@ -159,7 +159,7 @@ const DashboardLayout = () => {
               <BookOpen className="h-6 w-6 text-white" />
             </div>
             <span className="ml-2 text-xl font-bold text-gray-900">
-              StudyShare
+              NoteNex
             </span>
           </div>
           <button
