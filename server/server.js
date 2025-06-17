@@ -46,7 +46,8 @@ app.use(
             "http://localhost:3001", 
             "http://localhost:5173",  // Added Vite default port
             "http://localhost:5174",  // Added backup Vite port
-            "http://localhost:4173",  // Added Vite preview port
+            "http://localhost:4173",
+            "https://note-nex-iota.vercel.app/"  // Added Vite preview port
           ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
